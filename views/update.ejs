@@ -1,0 +1,38 @@
+<%- include('partials/header') %>
+
+    <div class="container">
+        <h2>Edit Student</h2>
+        <form method="POST" action="/students/<%=student.student_id%>/edit">
+        <div class="form-group">
+            <label for="firstname">Firstname:</label>
+            <input type="text" class="form-control" id="firstname" name="first_name" aria-describedby="firstname" placeholder="Enter firstname..." value="<%=student.first_name%>">
+        </div>
+        <div class="form-group">
+            <label for="lastname">Lastname:</label>
+            <input type="text" class="form-control" id="lastname" name="last_name" aria-describedby="lastname" placeholder="Enter lastname..." value="<%=student.last_name%>">
+        </div>
+        <div class="form-group">
+            <label for="course">Select Course:</label>
+            <select name="course" class="form-control" id="course">
+
+                <% if(student.course === "BSIT") {%>
+                    <option selected>BSIT</option>
+                <% } else { %>
+                    <option>BSIT</option>
+                <% } %>
+
+                <% if(student.course === "BSCS") {%>
+                    <option selected>BSCS</option>
+                <% } else { %>
+                    <option>BSCS</option>
+                <% } %>
+
+
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Save Changes</button>
+        <a class='btn btn-danger' href='/students'>Cancel</a>
+        </form>
+    </div>
+
+<%- include('partials/footer') %>

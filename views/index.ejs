@@ -1,0 +1,57 @@
+<%- include('partials/header') %>
+
+    <div class="container">
+
+        <form method="POST" action="/students">
+            <div class="form-group">
+                <label for="firstname">Firstname:</label>
+                <input type="text" class="form-control" id="firstname" name="first_name" aria-describedby="firstname" placeholder="Enter firstname...">
+            </div>
+            <div class="form-group">
+                <label for="lastname">Lastname:</label>
+                <input type="text" class="form-control" id="lastname" name="last_name" aria-describedby="lastname" placeholder="Enter lastname...">
+            </div>
+            <div class="form-group">
+                <label for="course">Select Course:</label>
+                <select name="course" class="form-control" id="course">
+                    <option>BSIT</option>
+                    <option>BSCS</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Add student</button>
+        </form>
+
+        <table class="table table-hover text-center mt-5">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Firstname</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">Course</th>
+                <th>Action(s)</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+
+                <% students.forEach(function(student) { %>
+                    <tr>
+                        <th><%=student.student_id%></th>
+                        <td><%=student.first_name%></td>
+                        <td><%=student.last_name%></td>
+                        <td><%=student.course%></td>
+                        <td>
+                            <a class='btn btn-success' href="/students/<%=student.student_id%>/edit">Edit</a>
+                            <a class='btn btn-danger' href="/students/<%=student.student_id%>/delete">Delete</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            
+            
+            </tbody>
+        </table>
+
+    </div>
+
+    
+<%- include('partials/footer') %>
